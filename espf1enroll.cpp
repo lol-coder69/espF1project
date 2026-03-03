@@ -221,19 +221,6 @@ uint8_t getfingerId()
         Serial.println("communication error has occured");
         return fngId;
     }
-    if(fngId == FINGERPRINT_OK)
-    {
-        Serial.println("prints have matched");
-    }
-    else if(fngId == FINGERPRINT_PACKETRECIEVEERR)
-    {
-        Serial.println("communication error has occured");
-        return fngId;
-    }
-    if(fngId == FINGERPRINT_OK)
-    {
-        Serial.println("prints have matched");
-    }
     else if(fngId == FINGERPRINT_BADLOCATION)
     {
         Serial.println("communication error has occured");
