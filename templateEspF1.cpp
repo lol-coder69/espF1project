@@ -1,7 +1,5 @@
 #include <Arduino.h>
-
 #include <Adafruit_Fingerprint.h>
-
 HardwareSerial serialPort(2); 
 Adafruit_Fingerprint fng = Adafruit_Fingerprint(&serialPort);
 int getFingerprintIDez();
@@ -9,8 +7,7 @@ void printHex(int num, int precision);
 uint8_t downloadFngTemplate(uint16_t id);
 void setup()
 {
-  while (!Serial)
-    ;
+  while (!Serial);
   Serial.begin(9600);
   Serial.println("Fingerprint template extractor");
   fng.begin(57600);
@@ -21,8 +18,7 @@ void setup()
   else
   {
     Serial.println("Did not find fingerprint sensor :(");
-    while (1)
-      ;
+    while (1);
   }
   for (int fng = 1; fng < 10; fng++)
   {
@@ -109,9 +105,8 @@ uint8_t downloadFngTemplate(uint16_t id)
     }
     }
 
-    Serial.print(index); Serial.println(" bytes read");
-
-    //dump entire templateBuffer.  This prints out 16 lines of 16 bytes
+    Serial.print(index);
+    Serial.println(" bytes read");
     for (int count= 0; count < 16; count++)
     {
     for (int i = 0; i < 16; i++)
@@ -127,9 +122,7 @@ void printHex(int num, int precision)
 {
   char tmp[16];
   char format[128];
-
   sprintf(format, "%%.%dX", precision);
-
   sprintf(tmp, format, num);
   Serial.print(tmp);
 }
